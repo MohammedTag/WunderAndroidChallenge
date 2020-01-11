@@ -15,7 +15,7 @@ users also could rent the ride after seeing its details
 7- unit testing
 
 
-## possibble performance optimizationn
+## possible performance optimizationn
 1-one activity multiple fragments
 2- using of navigation 
 3- maybe butter knife could've helped with the views
