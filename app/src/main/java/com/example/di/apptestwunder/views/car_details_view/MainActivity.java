@@ -105,19 +105,19 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
         if (response.isSuccessful() && response.body() != null) {
 
 
-//            carIdTv.setText(response.body().getCarId());
+           carIdTv.setText("car id: "+response.body().getCarId());
             titleTv.setText("title: " + response.body().getTitle());
             cleanStatusTv.setText("is Clean: " + response.body().getClean());
-            damageStatusTv.setText("damage status"+response.body().getDamaged());
+            damageStatusTv.setText("damage status: "+response.body().getDamaged());
             licenseTv.setText("license: " + response.body().getLicencePlate());
-//            fuelLevelTv.setText(response.body().getFuelLevel());
-//            vehicleStateIdTv.setText(response.body().getVehicleStateId());
+            fuelLevelTv.setText("fuel level: "+ response.body().getFuelLevel());
+            vehicleStateIdTv.setText("vehicle state id: "+ response.body().getVehicleStateId());
             hardwareIdTv.setText("hardware Id: " + response.body().getHardwareId());
-//            vehicleTypeIdTv.setText(response.body().getVehicleTypeId());
+            vehicleTypeIdTv.setText("vehicle Type Id: "+response.body().getVehicleTypeId());
             pricingTimeTv.setText("pricing Time: " + response.body().getPricingTime());
             pricingParkingTv.setText("pricing Parking: " + response.body().getPricingParking());
             isActivatedByHardwareTv.setText("is activated by hardware: "+response.body().getActivatedByHardware());
-//            locationIdTv.setText(response.body().getLocationId());
+            locationIdTv.setText("location Id: "+response.body().getLocationId());
             addressTv.setText("address: " + response.body().getAddress());
             zipCodeTv.setText("zip code: " + response.body().getZipCode());
             cityTv.setText("city: " + response.body().getCity());

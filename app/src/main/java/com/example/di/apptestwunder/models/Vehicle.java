@@ -76,7 +76,7 @@ public class Vehicle {
     }
 
 
-    public int getFuelLevel() {
+    public Integer getFuelLevel() {
         return fuelLevel;
     }
 
