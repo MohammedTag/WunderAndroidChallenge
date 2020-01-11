@@ -24,5 +24,5 @@ public interface GetDataService {
     Call<Vehicle> getVehicleDetails(@Path("car_id") String carID);
 
     @POST("default/wunderfleet-recruiting-mobile-dev-quick-rental")
-    Call<RentedVehicleModel> rentCar(@Body RentCarBody rentCarBody, @Header("Authorization") String authHeader);
+    Call<RentedVehicleModel> rentCar(@Body RentCarBody rentCarBody, @Header("Authorization") String authorization);
 }

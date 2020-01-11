@@ -24,7 +24,7 @@ public class RentCarModel implements Callback<RentedVehicleModel> {
 
             RentCarBody rentCarBody = new RentCarBody();
             rentCarBody.setCarId(carID);
-            ApiUtil.getDataService().rentCar(rentCarBody,"Bearer: df7c313b47b7ef87c64c0f5f5cebd6086bbb0fa").enqueue(this);
+            ApiUtil.getDataService().rentCar(rentCarBody,"Bearer df7c313b47b7ef87c64c0f5f5cebd6086bbb0fa").enqueue(this);
 
         }
 
