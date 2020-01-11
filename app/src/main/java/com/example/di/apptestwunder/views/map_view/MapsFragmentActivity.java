@@ -82,7 +82,7 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
                 LatLng latLng = new LatLng(currentLatitude, currentLongitude);
 
                 MarkerOptions marker2 = new MarkerOptions();
-                //marker2.icon(BitmapDescriptorFactory.fromResource(R.drawable.location));
+
                 marker2.position(latLng);
                 mMap.addMarker(marker2);
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14f));
@@ -95,7 +95,6 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
             @Override
             public boolean onMarkerClick(Marker marker) {
                 onMarkerClickLogic(marker);
-                /* tv.setText(myMarker.getTitle());    //Change TextView text here like this*/
                 return true;
             }
         });
@@ -105,16 +104,13 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
     private void onMarkerClickLogic(Marker marker) {
 
         if (doubleBackToExitPressedOnce) {
-            //navigate to the details of this marker
-
-            String title = marker.getTitle();
+             String title = marker.getTitle();
             Integer carId = CarIdentifier.get(title);
             Intent carDetailsIntent = new Intent(this, MainActivity.class);
             carDetailsIntent.putExtra("CAR_ID", carId);
             this.startActivity(carDetailsIntent);
-
-
         } else {
+
             this.doubleBackToExitPressedOnce = true;
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -131,11 +127,9 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
         MarkerOptions marker2 = new MarkerOptions();
         marker2.title(i.getTitle());
         marker2.snippet(i.getAddress());
-        //marker2.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_taxi));
         LatLng x = new LatLng(i.getLat(), i.getLon());
         marker2.position(x);
         mMap.addMarker(marker2).showInfoWindow();
-        //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLngs.get(i), 14f));
     }
 
 
@@ -158,17 +152,6 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
         onBackPressed();
         return true;
     }
-
-
-    private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
-        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
-        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
-        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        vectorDrawable.draw(canvas);
-        return BitmapDescriptorFactory.fromBitmap(bitmap);
-    }
-
 
     void initView() {
         if (Util.isNetworkAvailable(this)) {
@@ -205,29 +188,6 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
             setMarkerSelected(vehicles.get(i));
         }
 
-
-
-
-    /*    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED
-                && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_DENIED) {
-
-            ActivityCompat.requestPermissions(this, new String[] {
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION },
-                    REQUEST_ACCESS_COARSE_LOCATION);
-
-
-        } else {
-
-            mMap.setMyLocationEnabled ( true );
-            mMap.getUiSettings().setMyLocationButtonEnabled(true);
-
-            LocationManager lm = (LocationManager)getSystemService( Context.LOCATION_SERVICE);
-            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            currentLongitude = location.getLongitude();
-            currentLatitude = location.getLatitude();
-        }
-*/
     }
 
     @Override
