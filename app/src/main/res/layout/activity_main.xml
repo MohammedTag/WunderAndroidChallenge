@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:background="#ddd"
+    card_view:cardCornerRadius="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rowId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+      <!--  <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/car_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:layout_margin="7dp"
+            android:src="@drawable/taxi_icon"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/car_picture">
+
+            <TextView
+                android:id="@+id/car_id"
+                style="@style/textViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+
+                tools:text="car_id" />
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/textViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="title" />
+
+            <TextView
+                android:id="@+id/clean_status"
+                style="@style/textViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="clean_status" />
+
+            <TextView
+                android:id="@+id/damage_status"
+                style="@style/textViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="damage_status" />
+
+            <TextView
+                android:id="@+id/license"
+                style="@style/textViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="license" />
+
+            <TextView
+                android:id="@+id/fuel_level"
+                style="@style/textViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="fuel_level" />
+
+            <TextView
+                android:id="@+id/vehicle_state_id"
+                style="@style/textViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="vehicle_state_id" />
+
+            <TextView
+                android:id="@+id/hardware_id"
+                style="@style/textViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="hardware_id" />
+
+            <TextView
+                android:id="@+id/vehicle_type_Id"
+                style="@style/textViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="car_id" />
+
+            <TextView
+                android:id="@+id/pricing_time"
+                style="@style/textViewStyle"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                tools:text="title" />
+
+            <TextView
+                android:id="@+id/pricing_parking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="clean_status" />
+
+            <TextView
+                android:id="@+id/is_activated_by_hardware"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="damage_status" />
+
+            <TextView
+                android:id="@+id/location_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="license" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="fuel_level" />
+
+            <TextView
+                android:id="@+id/zip_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="vehicle_state_id" />
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="hardware_id" />
+
+            <TextView
+                android:id="@+id/lat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="lat" />
+
+            <TextView
+                android:id="@+id/lon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="lon" />
+
+            <TextView
+                android:id="@+id/reservationState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="reservationState" />
+
+            <TextView
+                android:id="@+id/damageDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyle"
+                tools:text="Marius hat gesagt das muss so, und so, und so\r\nUnd wenn ich das verändere?" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
