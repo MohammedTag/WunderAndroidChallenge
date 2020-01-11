@@ -1,9 +1,9 @@
-package com.example.di.apptestwunder.model;
+package com.example.di.apptestwunder.models;
 
 import android.util.Log;
 
 import com.example.di.apptestwunder.network.ApiUtil;
-import com.example.di.apptestwunder.presenter.map_presenter.mapViewListeners;
+import com.example.di.apptestwunder.presenters.map_presenter.mapViewListeners;
 
 
 import java.util.List;

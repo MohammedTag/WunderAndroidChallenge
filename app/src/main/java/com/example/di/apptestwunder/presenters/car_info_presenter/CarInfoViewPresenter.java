@@ -1,8 +1,8 @@
-package com.example.di.apptestwunder.presenter.car_info_presenter;
+package com.example.di.apptestwunder.presenters.car_info_presenter;
 
-import com.example.di.apptestwunder.model.CarDetailsModel;
-import com.example.di.apptestwunder.model.Vehicle;
-import com.example.di.apptestwunder.view.car_details_view.CarDetailsView;
+import com.example.di.apptestwunder.models.CarDetailsModel;
+import com.example.di.apptestwunder.models.Vehicle;
+import com.example.di.apptestwunder.views.car_details_view.CarDetailsView;
 
 import retrofit2.Call;
 import retrofit2.Response;

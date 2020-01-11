@@ -13,8 +13,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 import com.example.di.apptestwunder.R;
-import com.example.di.apptestwunder.model.Vehicle;
-import com.example.di.apptestwunder.view.map_view.MapsFragmentActivity;
+import com.example.di.apptestwunder.models.Vehicle;
+import com.example.di.apptestwunder.views.map_view.MapsFragmentActivity;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;

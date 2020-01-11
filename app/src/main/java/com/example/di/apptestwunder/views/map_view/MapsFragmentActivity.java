@@ -1,4 +1,4 @@
-package com.example.di.apptestwunder.view.map_view;
+package com.example.di.apptestwunder.views.map_view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.telecom.Call;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,11 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.di.apptestwunder.R;
-import com.example.di.apptestwunder.model.Vehicle;
-import com.example.di.apptestwunder.presenter.map_presenter.MapViewPresenter;
-import com.example.di.apptestwunder.util.Util;
-import com.example.di.apptestwunder.view.car_details_view.CarDetailsView;
-import com.example.di.apptestwunder.view.car_details_view.MainActivity;
+import com.example.di.apptestwunder.models.Vehicle;
+import com.example.di.apptestwunder.presenters.map_presenter.MapViewPresenter;
+import com.example.di.apptestwunder.utils.Util;
+import com.example.di.apptestwunder.views.car_details_view.MainActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

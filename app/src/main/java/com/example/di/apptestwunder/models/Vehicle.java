@@ -1,4 +1,4 @@
-package com.example.di.apptestwunder.model;
+package com.example.di.apptestwunder.models;
 
 import com.google.gson.annotations.SerializedName;
 

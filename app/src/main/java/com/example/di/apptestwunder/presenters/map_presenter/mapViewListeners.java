@@ -1,7 +1,7 @@
-package com.example.di.apptestwunder.presenter.map_presenter;
+package com.example.di.apptestwunder.presenters.map_presenter;
 
 
-import com.example.di.apptestwunder.model.Vehicle;
+import com.example.di.apptestwunder.models.Vehicle;
 
 
 import java.util.List;

@@ -1,10 +1,10 @@
-package com.example.di.apptestwunder.presenter.map_presenter;
+package com.example.di.apptestwunder.presenters.map_presenter;
 
 
 
-import com.example.di.apptestwunder.model.MapModel;
-import com.example.di.apptestwunder.model.Vehicle;
-import com.example.di.apptestwunder.view.map_view.mapView;
+import com.example.di.apptestwunder.models.MapModel;
+import com.example.di.apptestwunder.models.Vehicle;
+import com.example.di.apptestwunder.views.map_view.mapView;
 
 import java.util.List;
 

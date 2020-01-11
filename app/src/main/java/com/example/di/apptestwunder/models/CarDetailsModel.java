@@ -1,7 +1,7 @@
-package com.example.di.apptestwunder.model;
+package com.example.di.apptestwunder.models;
 
 import com.example.di.apptestwunder.network.ApiUtil;
-import com.example.di.apptestwunder.presenter.car_info_presenter.CarInfoViewListeners;
+import com.example.di.apptestwunder.presenters.car_info_presenter.CarInfoViewListeners;
 
 import retrofit2.Call;
 import retrofit2.Callback;

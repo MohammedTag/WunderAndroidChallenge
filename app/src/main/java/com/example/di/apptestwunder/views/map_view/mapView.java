@@ -1,6 +1,6 @@
-package com.example.di.apptestwunder.view.map_view;
+package com.example.di.apptestwunder.views.map_view;
 
-import com.example.di.apptestwunder.model.Vehicle;
+import com.example.di.apptestwunder.models.Vehicle;
 
 import java.util.List;
 

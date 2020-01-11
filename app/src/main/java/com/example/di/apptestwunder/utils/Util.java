@@ -9,7 +9,7 @@
  *  all copies or substantial portions of the Software.
  */
 
-package com.example.di.apptestwunder.util;
+package com.example.di.apptestwunder.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

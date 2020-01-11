@@ -1,30 +1,16 @@
-package com.example.di.apptestwunder.view.car_details_view;
+package com.example.di.apptestwunder.views.car_details_view;
 
 import android.app.ProgressDialog;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.di.apptestwunder.R;
-import com.example.di.apptestwunder.adapter.VehiclesListAdapter;
-import com.example.di.apptestwunder.model.Vehicle;
-import com.example.di.apptestwunder.presenter.car_info_presenter.CarInfoViewPresenter;
-import com.example.di.apptestwunder.presenter.map_presenter.MapViewPresenter;
-import com.example.di.apptestwunder.util.Util;
-import com.example.di.apptestwunder.view.map_view.mapView;
-
-import java.util.List;
+import com.example.di.apptestwunder.models.Vehicle;
+import com.example.di.apptestwunder.presenters.car_info_presenter.CarInfoViewPresenter;
+import com.example.di.apptestwunder.utils.Util;
 
 import retrofit2.Call;
 import retrofit2.Response;
