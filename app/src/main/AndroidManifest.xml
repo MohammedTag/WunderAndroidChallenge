@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.di.apptestwunder">
+    package="com.example.assignment.wunder">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.map_view.MapsFragmentActivity"
+            android:name="com.example.assignment.wunder.views.map_view.MapsFragmentActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +46,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".views.car_details_view.MainActivity"
+            android:name="com.example.assignment.wunder.views.car_details_view.MainActivity"
            />
 
     </application>
