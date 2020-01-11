@@ -22,17 +22,17 @@ public class CarInfoViewPresenter implements CarInfoViewListeners {
 
     }
 
-    public void getCarsDetails(String carID){
+    public void getCarsDetails(String carID) {
         model.getCarsinfo(carID);
     }
 
     @Override
     public void onCarInfoSuccess(Call<Vehicle> call, Response<Vehicle> response) {
-        
+        view.onCarInfoSuccess(call, response);
     }
 
     @Override
     public void onCarInfoFailed(Call<Vehicle> call, Throwable t) {
-
+        view.onCarInfoFailed(call, t);
     }
 }

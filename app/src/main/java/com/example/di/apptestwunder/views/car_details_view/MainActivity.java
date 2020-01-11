@@ -61,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
 
     @Override
     public void onCarInfoFailed(Call<Vehicle> call, Throwable t) {
+        mDialog.dismiss();
         Toast.makeText(this, "Get list repo failed", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

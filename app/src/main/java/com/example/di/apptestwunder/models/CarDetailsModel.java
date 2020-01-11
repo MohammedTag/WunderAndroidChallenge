@@ -20,17 +20,18 @@ public class CarDetailsModel implements Callback<Vehicle> {
     }
 
 
-    public void getCarsinfo(String carID){
+    public void getCarsinfo(String carID) {
         ApiUtil.getDataService().getVehicleDetails(carID).enqueue(this);
 
     }
+
     @Override
     public void onResponse(Call<Vehicle> call, Response<Vehicle> response) {
-
+        listener.onCarInfoSuccess(call, response);
     }
 
     @Override
     public void onFailure(Call<Vehicle> call, Throwable t) {
-
+        listener.onCarInfoFailed(call, t);
     }
 }

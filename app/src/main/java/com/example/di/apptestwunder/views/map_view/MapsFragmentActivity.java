@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Response;
@@ -44,6 +45,8 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
     boolean doubleBackToExitPressedOnce = false;
 
     private List<Vehicle> vehicles;
+
+    private HashMap<String, String> CarIdentifier = new HashMap<String, String>();
 
     double currentLongitude;
     double currentLatitude;
@@ -103,15 +106,17 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
 
     private void onMarkerClickLogic(Marker marker) {
 
-        if (doubleBackToExitPressedOnce){
+        if (doubleBackToExitPressedOnce) {
             //navigate to the details of this marker
-                    String carId = marker.getSnippet();
-                    Intent carDetailsIntent = new Intent(this, MainActivity.class);
-                    carDetailsIntent.putExtra("CAR_ID", carId);
-                    this.startActivity(carDetailsIntent);
+
+            String title = marker.getTitle();
+            String carId = CarIdentifier.get(title);
+            Intent carDetailsIntent = new Intent(this, MainActivity.class);
+            carDetailsIntent.putExtra("CAR_ID", carId);
+            this.startActivity(carDetailsIntent);
 
 
-        }else {
+        } else {
             this.doubleBackToExitPressedOnce = true;
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -186,15 +191,14 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
                 marker.title(vehicles.get(i).getTitle());
             }
             if (vehicles.get(i).getAddress() != null) {
-                marker.snippet(vehicles.get(i).getAddress());
+                marker.snippet(vehicles.get(i).getCarId().toString());
             }
             if (vehicles.get(i).getLat() != null && vehicles.get(i).getLon() != null) {
                 marker.position(new LatLng(vehicles.get(i).getLat(), vehicles.get(i).getLon()));
             }
-            String caridsnippet =vehicles.get(i).getCarId().toString();
-            mMap.addMarker(new MarkerOptions()
-                    .position(marker.getPosition())
-                    .title(vehicles.get(i).getTitle())).setSnippet(caridsnippet);
+            mMap.addMarker(marker);
+
+            CarIdentifier.put(marker.getTitle(), vehicles.get(i).getCarId().toString());
 
         }
 
