@@ -44,8 +44,6 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
 
     boolean doubleBackToExitPressedOnce = false;
 
-    private List<Vehicle> vehicles;
-
     private HashMap<String, String> CarIdentifier = new HashMap<String, String>();
 
     double currentLongitude;
@@ -182,7 +180,7 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
 
     @Override
     public void showSuccess(retrofit2.Call<List<Vehicle>> call, Response<List<Vehicle>> response) {
-        vehicles = response.body();
+        List<Vehicle> vehicles = response.body();
 
         MarkerOptions marker = new MarkerOptions();
 

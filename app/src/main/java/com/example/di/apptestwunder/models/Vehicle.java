@@ -99,4 +99,64 @@ public class Vehicle {
     public void setCarId(Integer carId) {
         this.carId = carId;
     }
+
+    public Boolean getClean() {
+        return isClean;
+    }
+
+    public Boolean getDamaged() {
+        return isDamaged;
+    }
+
+    public String getLicencePlate() {
+        return licencePlate;
+    }
+
+    public Integer getVehicleStateId() {
+        return vehicleStateId;
+    }
+
+    public String getHardwareId() {
+        return hardwareId;
+    }
+
+    public Integer getVehicleTypeId() {
+        return vehicleTypeId;
+    }
+
+    public String getPricingTime() {
+        return pricingTime;
+    }
+
+    public String getPricingParking() {
+        return pricingParking;
+    }
+
+    public Boolean getActivatedByHardware() {
+        return isActivatedByHardware;
+    }
+
+    public Integer getLocationId() {
+        return locationId;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public Integer getReservationState() {
+        return reservationState;
+    }
+
+    public String getDamageDescription() {
+        return damageDescription;
+    }
+
+    public String getVehicleTypeImageUrl() {
+        return vehicleTypeImageUrl;
+    }
 }
