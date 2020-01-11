@@ -44,7 +44,7 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
 
     boolean doubleBackToExitPressedOnce = false;
 
-    private HashMap<String, String> CarIdentifier = new HashMap<String, String>();
+    private HashMap<String, Integer> CarIdentifier = new HashMap<String, Integer>();
 
     double currentLongitude;
     double currentLatitude;
@@ -108,7 +108,7 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
             //navigate to the details of this marker
 
             String title = marker.getTitle();
-            String carId = CarIdentifier.get(title);
+            Integer carId = CarIdentifier.get(title);
             Intent carDetailsIntent = new Intent(this, MainActivity.class);
             carDetailsIntent.putExtra("CAR_ID", carId);
             this.startActivity(carDetailsIntent);
@@ -196,7 +196,7 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
             }
             mMap.addMarker(marker);
 
-            CarIdentifier.put(marker.getTitle(), vehicles.get(i).getCarId().toString());
+            CarIdentifier.put(marker.getTitle(), vehicles.get(i).getCarId());
 
         }
 

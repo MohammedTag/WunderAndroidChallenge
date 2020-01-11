@@ -3,6 +3,8 @@ package com.example.di.apptestwunder.views.car_details_view;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.di.apptestwunder.R;
+import com.example.di.apptestwunder.models.RentedVehicleModel;
 import com.example.di.apptestwunder.models.Vehicle;
 import com.example.di.apptestwunder.presenters.car_info_presenter.CarInfoViewPresenter;
 import com.example.di.apptestwunder.utils.Util;
@@ -26,29 +29,13 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
     private ProgressDialog mDialog;
     private CarInfoViewPresenter presenter;
 
-    private String carId;
+    private Integer carId;
 
-    private ImageView CarImage;
-    private TextView carIdTv;
-    private TextView titleTv;
-    private TextView cleanStatusTv;
-    private TextView damageStatusTv;
-    private TextView licenseTv;
-    private TextView fuelLevelTv;
-    private TextView vehicleStateIdTv;
-    private TextView hardwareIdTv;
-    private TextView vehicleTypeIdTv;
-    private TextView pricingTimeTv;
-    private TextView pricingParkingTv;
-    private TextView isActivatedByHardwareTv;
-    private TextView locationIdTv;
-    private TextView addressTv;
-    private TextView zipCodeTv;
-    private TextView cityTv;
-    private TextView latTv;
-    private TextView lonTv;
-    private TextView reservationStateTv;
-    private TextView damageDescriptionTv;
+    ImageView CarImage;
+    TextView carIdTv, titleTv, cleanStatusTv, damageStatusTv, licenseTv, fuelLevelTv, vehicleStateIdTv,
+            hardwareIdTv, vehicleTypeIdTv, pricingTimeTv, pricingParkingTv,
+            isActivatedByHardwareTv, locationIdTv, addressTv, zipCodeTv, cityTv, latTv, lonTv, reservationStateTv, damageDescriptionTv;
+    Button rentCarActionBtn;
 
 
     @Override
@@ -57,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
         setContentView(R.layout.activity_main);
 
         /* CarImage = findViewById(R.id.car_id);*/
-        carIdTv = findViewById(R.id.car_id);
+        carIdTv = findViewById(R.id.car_Identifire);
         titleTv = findViewById(R.id.title);
         cleanStatusTv = findViewById(R.id.clean_status);
         damageStatusTv = findViewById(R.id.damage_status);
@@ -79,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
         damageDescriptionTv = findViewById(R.id.damageDescription);
 
 
+        rentCarActionBtn = findViewById(R.id.rent_car_button);
+
+
         presenter = new CarInfoViewPresenter(this);
 
         mDialog = new ProgressDialog(this);
@@ -89,13 +79,21 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
         mDialog.show();
 
         Intent it = getIntent();
-        carId = it.getStringExtra("CAR_ID");
+        carId = it.getIntExtra("CAR_ID", 1);
+
+        rentCarActionBtn.setText("Rent Car");
+        rentCarActionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.rentCar(carId);
+            }
+        });
         initView();
     }
 
     void initView() {
         if (Util.isNetworkAvailable(this)) {
-            presenter.getCarsDetails(carId);
+            presenter.getCarsDetails(carId.toString());
         } else {
             Toast.makeText(this, "No connection", Toast.LENGTH_LONG).show();
         }
@@ -105,25 +103,27 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
     public void onCarInfoSuccess(Call<Vehicle> call, Response<Vehicle> response) {
 
         if (response.isSuccessful() && response.body() != null) {
-            carIdTv.setText(response.body().getCarId());
+
+
+//            carIdTv.setText(response.body().getCarId());
             titleTv.setText(response.body().getTitle());
-            cleanStatusTv.setText(response.body().getClean().toString());
-            damageStatusTv.setText(response.body().getDamaged().toString());
+            cleanStatusTv.setText(String.valueOf(response.body().getClean()));
+            damageStatusTv.setText(String.valueOf(response.body().getDamaged()));
             licenseTv.setText(response.body().getLicencePlate());
-            fuelLevelTv.setText(response.body().getFuelLevel());
-            vehicleStateIdTv.setText(response.body().getVehicleStateId());
+//            fuelLevelTv.setText(response.body().getFuelLevel());
+//            vehicleStateIdTv.setText(response.body().getVehicleStateId());
             hardwareIdTv.setText(response.body().getHardwareId());
-            vehicleTypeIdTv.setText(response.body().getVehicleTypeId());
+//            vehicleTypeIdTv.setText(response.body().getVehicleTypeId());
             pricingTimeTv.setText(response.body().getPricingTime());
             pricingParkingTv.setText(response.body().getPricingParking());
-            isActivatedByHardwareTv.setText(response.body().getActivatedByHardware().toString());
-            locationIdTv.setText(response.body().getLocationId());
+            isActivatedByHardwareTv.setText(String.valueOf(response.body().getActivatedByHardware()));
+//            locationIdTv.setText(response.body().getLocationId());
             addressTv.setText(response.body().getAddress());
             zipCodeTv.setText(response.body().getZipCode());
             cityTv.setText(response.body().getCity());
-            latTv.setText(response.body().getLat().toString());
-            lonTv.setText(response.body().getLon().toString());
-            reservationStateTv.setText(response.body().getReservationState().toString());
+            latTv.setText(String.valueOf(response.body().getLat()));
+            lonTv.setText(String.valueOf(response.body().getLon()));
+            reservationStateTv.setText(String.valueOf(response.body().getReservationState()));
             damageDescriptionTv.setText(response.body().getDamageDescription());
 
         }
@@ -135,6 +135,18 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
     public void onCarInfoFailed(Call<Vehicle> call, Throwable t) {
         mDialog.dismiss();
         Toast.makeText(this, "Get list repo failed", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRentCarSuccess(Call<RentedVehicleModel> call, Response<RentedVehicleModel> response) {
+        if (response.isSuccessful() && response.body() != null) {
+            Toast.makeText(this, "Car Has Been Rented Successfully", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onRentCarFailed(Call<RentedVehicleModel> call, Throwable t) {
+        Toast.makeText(this, "Couldn't rent car", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.example.di.apptestwunder.presenters.car_info_presenter;
 
 import com.example.di.apptestwunder.models.CarDetailsModel;
+import com.example.di.apptestwunder.models.RentCarModel;
+import com.example.di.apptestwunder.models.RentedVehicleModel;
 import com.example.di.apptestwunder.models.Vehicle;
 import com.example.di.apptestwunder.views.car_details_view.CarDetailsView;
 
@@ -14,16 +16,22 @@ import retrofit2.Response;
 public class CarInfoViewPresenter implements CarInfoViewListeners {
 
     private CarDetailsView view;
-    private CarDetailsModel model;
+    private CarDetailsModel carDetailsmodel;
+    private RentCarModel rentCarModel;
 
     public CarInfoViewPresenter(CarDetailsView view) {
         this.view = view;
-        model = new CarDetailsModel(this);
+        carDetailsmodel = new CarDetailsModel(this);
+        rentCarModel = new RentCarModel(this);
 
     }
 
     public void getCarsDetails(String carID) {
-        model.getCarsinfo(carID);
+        carDetailsmodel.getCarsinfo(carID);
+    }
+
+    public void rentCar(Integer carID) {
+        rentCarModel.getRentCar(carID);
     }
 
     @Override
@@ -34,5 +42,15 @@ public class CarInfoViewPresenter implements CarInfoViewListeners {
     @Override
     public void onCarInfoFailed(Call<Vehicle> call, Throwable t) {
         view.onCarInfoFailed(call, t);
+    }
+
+    @Override
+    public void onRentCarSuccess(Call<RentedVehicleModel> call, Response<RentedVehicleModel> response) {
+        view.onRentCarSuccess(call, response);
+    }
+
+    @Override
+    public void onRentCarFailed(Call<RentedVehicleModel> call, Throwable t) {
+        view.onRentCarFailed(call, t);
     }
 }
