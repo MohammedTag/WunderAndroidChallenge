@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
         Intent it = getIntent();
         carId = it.getIntExtra("CAR_ID", 1);
 
-        rentCarActionBtn.setText("Rent Car");
         rentCarActionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
