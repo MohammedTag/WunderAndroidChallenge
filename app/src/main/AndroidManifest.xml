@@ -22,7 +22,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".views.map_view.MapsFragmentActivity"
-            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +45,7 @@
 
         <activity
             android:name=".views.car_details_view.MainActivity"
-            android:label="@string/title_activity_maps" />
+           />
 
     </application>
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppTestWunder</string>
+    <string name="app_name">Wunder App</string>
     <string name="title_activity_maps">Map</string>
     <string name="rent_car">Rent Car</string>
 </resources>

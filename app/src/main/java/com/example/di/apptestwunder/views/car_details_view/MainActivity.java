@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.di.apptestwunder.R;
 import com.example.di.apptestwunder.models.RentedVehicleModel;
 import com.example.di.apptestwunder.models.Vehicle;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* CarImage = findViewById(R.id.car_id);*/
+        CarImage = findViewById(R.id.car_picture);
         carIdTv = findViewById(R.id.car_Identifire);
         titleTv = findViewById(R.id.title);
         cleanStatusTv = findViewById(R.id.clean_status);
@@ -106,25 +107,29 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
 
 
 //            carIdTv.setText(response.body().getCarId());
-            titleTv.setText(response.body().getTitle());
-            cleanStatusTv.setText(String.valueOf(response.body().getClean()));
-            damageStatusTv.setText(String.valueOf(response.body().getDamaged()));
-            licenseTv.setText(response.body().getLicencePlate());
+            titleTv.setText("title: " + response.body().getTitle());
+            cleanStatusTv.setText("is Clean: " + response.body().getClean());
+            damageStatusTv.setText("damage status"+response.body().getDamaged());
+            licenseTv.setText("license: " + response.body().getLicencePlate());
 //            fuelLevelTv.setText(response.body().getFuelLevel());
 //            vehicleStateIdTv.setText(response.body().getVehicleStateId());
-            hardwareIdTv.setText(response.body().getHardwareId());
+            hardwareIdTv.setText("hardware Id: " + response.body().getHardwareId());
 //            vehicleTypeIdTv.setText(response.body().getVehicleTypeId());
-            pricingTimeTv.setText(response.body().getPricingTime());
-            pricingParkingTv.setText(response.body().getPricingParking());
-            isActivatedByHardwareTv.setText(String.valueOf(response.body().getActivatedByHardware()));
+            pricingTimeTv.setText("pricing Time: " + response.body().getPricingTime());
+            pricingParkingTv.setText("pricing Parking: " + response.body().getPricingParking());
+            isActivatedByHardwareTv.setText("is activated by hardware: "+response.body().getActivatedByHardware());
 //            locationIdTv.setText(response.body().getLocationId());
-            addressTv.setText(response.body().getAddress());
-            zipCodeTv.setText(response.body().getZipCode());
-            cityTv.setText(response.body().getCity());
-            latTv.setText(String.valueOf(response.body().getLat()));
-            lonTv.setText(String.valueOf(response.body().getLon()));
-            reservationStateTv.setText(String.valueOf(response.body().getReservationState()));
-            damageDescriptionTv.setText(response.body().getDamageDescription());
+            addressTv.setText("address: " + response.body().getAddress());
+            zipCodeTv.setText("zip code: " + response.body().getZipCode());
+            cityTv.setText("city: " + response.body().getCity());
+            latTv.setText("latitude: " +response.body().getLat());
+            lonTv.setText("longitude: "+ response.body().getLon());
+            reservationStateTv.setText("reservation State: " + response.body().getReservationState());
+            damageDescriptionTv.setText("damageDescription: " + response.body().getDamageDescription());
+            Glide.with(this)
+                    .load(response.body().getVehicleTypeImageUrl())
+                    .centerInside()
+                    .into(CarImage);
 
         }
 
@@ -141,6 +146,8 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
     public void onRentCarSuccess(Call<RentedVehicleModel> call, Response<RentedVehicleModel> response) {
         if (response.isSuccessful() && response.body() != null) {
             Toast.makeText(this, "Car Has Been Rented Successfully", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "Something wrong happened, try again later", Toast.LENGTH_SHORT).show();
         }
     }
 
