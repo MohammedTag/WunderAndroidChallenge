@@ -55,6 +55,7 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
 
     double currentLongitude;
     double currentLatitude;
+    String clickedMarkerTitle;
 
 
     @Override
@@ -120,15 +121,16 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
 
     private void onMarkerClickLogic(Marker marker) {
 
-        if (doubleBackToExitPressedOnce) {
-            String title = marker.getTitle();
-            Integer carId = CarIdentifier.get(title);
+        if (doubleBackToExitPressedOnce && marker.getTitle().equals(clickedMarkerTitle)) {
+
+            Integer carId = CarIdentifier.get(clickedMarkerTitle);
             Intent carDetailsIntent = new Intent(this, MainActivity.class);
             carDetailsIntent.putExtra("CAR_ID", carId);
             this.startActivity(carDetailsIntent);
         } else {
 
             this.doubleBackToExitPressedOnce = true;
+            clickedMarkerTitle = marker.getTitle();
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
