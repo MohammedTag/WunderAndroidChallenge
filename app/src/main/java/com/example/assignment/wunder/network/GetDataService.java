@@ -14,6 +14,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Url;
 
 
 public interface GetDataService {
@@ -23,7 +24,8 @@ public interface GetDataService {
     @GET("cars/{car_id}")
     Call<Vehicle> getVehicleDetails(@Path("car_id") String carID);
 
-    @POST("default/wunderfleet-recruiting-mobile-dev-quick-rental")
+
+    @POST
     @Headers({"Authorization: Bearer df7c313b47b7ef87c64c0f5f5cebd6086bbb0fa"})
-    Call<RentedVehicleModel> rentCar(@Body RentCarBody rentCarBody);
+    Call<RentedVehicleModel> rentCar(@Body RentCarBody rentCarBody, @Url String  url);
 }

@@ -86,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
             @Override
             public void onClick(View view) {
                 presenter.rentCar(carId);
+                mDialog.setMessage("Renting your vehicle...");
+                mDialog.show();
             }
         });
         initView();
@@ -144,14 +146,17 @@ public class MainActivity extends AppCompatActivity implements CarDetailsView {
     @Override
     public void onRentCarSuccess(Call<RentedVehicleModel> call, Response<RentedVehicleModel> response) {
         if (response.isSuccessful() && response.body() != null) {
+            mDialog.dismiss();
             Toast.makeText(this, "Car Has Been Rented Successfully", Toast.LENGTH_SHORT).show();
         }else {
+            mDialog.dismiss();
             Toast.makeText(this, "Something wrong happened, try again later", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onRentCarFailed(Call<RentedVehicleModel> call, Throwable t) {
+        mDialog.dismiss();
         Toast.makeText(this, "Couldn't rent car", Toast.LENGTH_SHORT).show();
     }
 

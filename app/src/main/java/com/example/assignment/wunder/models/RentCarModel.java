@@ -7,6 +7,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.assignment.wunder.network.ApiUtil.RENT_CAR_END_POINT;
+
 /**
  * Created by Mohammed Sayed Taguldeen on 11,January,2020
  * Cairo, Egypt.
@@ -24,7 +26,7 @@ public class RentCarModel implements Callback<RentedVehicleModel> {
 
             RentCarBody rentCarBody = new RentCarBody();
             rentCarBody.setCarId(carID);
-            ApiUtil.getDataService().rentCar(rentCarBody).enqueue(this);
+            ApiUtil.getDataService().rentCar(rentCarBody,RENT_CAR_END_POINT).enqueue(this);
 
         }
 
