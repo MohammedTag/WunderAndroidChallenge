@@ -46,7 +46,6 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
     private Boolean mLocationPermissionsGranted = false;
 
     private GoogleMap mMap;
-    private FusedLocationProviderClient mFusedLocationProviderClient;
     private MapViewPresenter presenter;
 
     boolean doubleBackToExitPressedOnce = false;
@@ -115,7 +114,6 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
                 return true;
             }
         });
-        getUserLocation();
         mMap.setMyLocationEnabled(true);
     }
 
@@ -243,34 +241,5 @@ public class MapsFragmentActivity extends AppCompatActivity implements OnMapRead
     @Override
     public void showError(retrofit2.Call<List<Vehicle>> call, Throwable t) {
         Toast.makeText(this, "Get list repo failed", Toast.LENGTH_SHORT).show();
-    }
-
-    private void getUserLocation() {
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
-        try {
-            Task location = mFusedLocationProviderClient.getLastLocation();
-            location.addOnCompleteListener(new OnCompleteListener() {
-                @Override
-                public void onComplete(@NonNull Task task) {
-                    if (task.isSuccessful()) {
-                        Location currentLocation = (Location) task.getResult();
-                        if (currentLocation != null){
-
-                            MarkerOptions currentLocationMarker = new MarkerOptions();
-                            LatLng currentLocationMarkerLatLong = new LatLng(currentLocation.getLatitude(),
-                            currentLocation.getLongitude());
-                            currentLocationMarker.position(currentLocationMarkerLatLong).title("User Location");
-                            mMap.addMarker(currentLocationMarker);
-                        }
-
-                    }else {
-                        Toast.makeText(MapsFragmentActivity.this, "unable to get current Location", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        } catch (SecurityException e) {
-            Log.e("getUserLocation error", "getUserLocation: " + e.getMessage());
-        }
     }
 }
